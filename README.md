@@ -1,4 +1,4 @@
-Esta API trata da realização de cadastro de usuários candidatos a um agendamento de vacinação.
+Esta API trata da realização de cadastro de usuários candidatos a um agendamento de vacinação, e do registro da aplicação das doses.
 
 As agendas de vacinação possuem data de Início e data Fim de vigência, período no qual o usuário poderá se vacinar. As agendas possuem também o número da dose (se primeira ou segunda), à qual o usuário/paciente será submetido.
 
@@ -18,7 +18,7 @@ A API possui rotas seguras para realização das requisições. Após efetuado o
 Seguem os comandos para clonagem e montagem do ambiente para execução da API:
 
 # Clonagem do git
-    > git clone ...
+    > git clone https://github.com/Geraldo-Alves/sm_places_api.git
 
 # Após clonagem do git (Assumindo a pré instalação e configuração do Docker)
     Dentro da pasta projeto, executar os seguintes comandos:
@@ -67,6 +67,7 @@ Seguem as rotas da aplicação que necessitam do token (Obrigatório):
 
     > [GET] http://localhost:8088/api/admin/usuarios
         Rota para listagem dos usuários
+
     > [patch] http://agendamento/{id_agendamento}
         {
             "aplicada": [0, 1]
@@ -75,7 +76,8 @@ Seguem as rotas da aplicação que necessitam do token (Obrigatório):
 
 # Rotas do Usuário
     > [GET] http://localhost:8088/api/usuario/dados
-        Rota visualização dos dados do usuário autenticado 
+        Rota visualização dos dados do usuário autenticado
+         
     > [GET] http://localhost:8088/api/admin/usuarios
         Rota para visualização dos agendamentos do usuário autenticado
         
