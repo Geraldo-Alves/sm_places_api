@@ -20,7 +20,7 @@ Seguem os comandos para clonagem e montagem do ambiente para execução da API:
 # Clonagem do git
     > git clone https://github.com/Geraldo-Alves/sm_places_api.git
 
-# Após clonagem do git (Assumindo a pré instalação e configuração do Docker)
+# Após clonagem do git (Assumindo a pré instalação e configuração do Docker e composer)
     Dentro da pasta projeto, executar os seguintes comandos:
 
     > docker-compose build
@@ -30,8 +30,10 @@ Seguem os comandos para clonagem e montagem do ambiente para execução da API:
         Comando para subir os containers do docker com a Api, Nginx e Mysql
 
     > cd src
+        Navegar para a pasta raiz da API
     
     > composer install    
+        Instalação das depenências do Laravel
 
     > docker exec -it sm_places_api chmod -R 777 storage
         Comando para permitir acesso de escrita à pasta de registro de logs do Laravel.
@@ -94,3 +96,7 @@ Seguem as rotas da aplicação que necessitam do token (Obrigatório):
     > [GET] http://localhost:8088/api/admin/agendamentos
         Rota para visualização dos agendamentos do usuário autenticado
         
+# Testes automatizados
+    > docker exec -it sm_places_api php artisan test
+        Comando para execução dos testes automatizados
+    > AgendamentoTeste
