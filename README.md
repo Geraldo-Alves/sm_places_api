@@ -23,14 +23,21 @@ Seguem os comandos para clonagem e montagem do ambiente para execução da API:
 # Após clonagem do git (Assumindo a pré instalação e configuração do Docker)
     Dentro da pasta projeto, executar os seguintes comandos:
 
-    > docker build
+    > docker-compose build
         Comando para criação e configuração das imagens
 
     > docker-compose up -d
-        Comando para subir os containers do docker com a Api, Nginx e Mysql    
+        Comando para subir os containers do docker com a Api, Nginx e Mysql
+
+    > cd src
+    
+    > composer install    
 
     > docker exec -it sm_places_api chmod -R 777 storage
         Comando para permitir acesso de escrita à pasta de registro de logs do Laravel.
+
+    > cp .env.example .env
+        Comando para definir as variáveis de ambiente da API 
 
     > docker exec -it sm_places_api php artisan migrate
         Comando para realizar a migração do banco de dados.
@@ -40,6 +47,12 @@ Seguem os comandos para clonagem e montagem do ambiente para execução da API:
 
     > docker exec -it sm_places_api php artisan passport:install
         Comando para realizar a instalação do Passport, utilizado para autenticação segura do usuário.
+
+    > docker exec -it sm_places_api php artisan passport:keys
+        Definindo as chaves de autenticação da API
+    
+    > docker exec -it sm_places_api php artisan key:generate
+        Definindo as chaves de autenticação da API
 
 Seguem as rotas da aplicação que não necessitam do token:
 # Login: Admin ou Usuário
@@ -78,6 +91,6 @@ Seguem as rotas da aplicação que necessitam do token (Obrigatório):
     > [GET] http://localhost:8088/api/usuario/dados
         Rota visualização dos dados do usuário autenticado
          
-    > [GET] http://localhost:8088/api/admin/usuarios
+    > [GET] http://localhost:8088/api/admin/agendamentos
         Rota para visualização dos agendamentos do usuário autenticado
         
